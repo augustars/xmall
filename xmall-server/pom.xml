@@ -15,6 +15,7 @@
     	<maven.compiler.source>1.8</maven.compiler.source>
     	<maven.compiler.target>1.8</maven.compiler.target>
     	<!-- 配置项目各个依赖关系版本 -->
+    	<xmall-entity.version>0.0.1-SNAPSHOT</xmall-entity.version>
     	<xmall-interface.version>0.0.1-SNAPSHOT</xmall-interface.version>
     	<spring-boot.version>2.0.4.RELEASE</spring-boot.version>
     	<dubbo.version>2.6.2</dubbo.version>
@@ -25,6 +26,11 @@
 
   	<dependencies>
   		<!-- 配置项目接口依赖关系[BEGIN] -->
+  		<dependency>
+  			<groupId>com.augustars.xmall</groupId>
+  			<artifactId>xmall-entity</artifactId>
+  			<version>${xmall-entity.version}</version>
+  		</dependency>
   		<dependency>
   			<groupId>com.augustars.xmall</groupId>
   			<artifactId>xmall-interface</artifactId>
@@ -86,6 +92,12 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-data-jpa</artifactId>
 		    <version>${spring-boot.version}</version>
+		    <exclusions>
+		    	<exclusion>
+		    		<groupId>org.hibernate.javax.persistence</groupId>
+		    		<artifactId>hibernate-jpa-2.1-api</artifactId>
+		    	</exclusion>
+		    </exclusions>
 		</dependency>
     	<!-- 配置Spring-Boot-Data-JPA依赖关系[END] -->
     	

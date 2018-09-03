@@ -1,5 +1,7 @@
 package com.augustars.xmall.switcher;
 
+import com.augustars.xmall.entity.User;
+
 public interface UserSwitcher {
-	public void test() throws Exception;
+	public User getUserByLogin(String loginName) throws Exception;
 }

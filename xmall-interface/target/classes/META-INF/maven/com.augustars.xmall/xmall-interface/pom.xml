@@ -13,9 +13,17 @@
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     	<maven.compiler.source>1.8</maven.compiler.source>
     	<maven.compiler.target>1.8</maven.compiler.target>
+    	<!-- 配置项目各个依赖关系版本 -->
+    	<xmall-entity.version>0.0.1-SNAPSHOT</xmall-entity.version>
   	</properties>
 
   	<dependencies>
+  		<dependency>
+  			<groupId>com.augustars.xmall</groupId>
+  			<artifactId>xmall-entity</artifactId>
+  			<version>${xmall-entity.version}</version>
+  		</dependency>
+  	
     	<dependency>
       		<groupId>junit</groupId>
       		<artifactId>junit</artifactId>

@@ -1,14 +1,14 @@
 # 配置Tomcat端口号
 server:
-  port: 9998
+  port: 9997
 # 配置Spring Boot项目名
 spring:
   application:
-    name: xmall
+    name: xmall-admin
 # 配置Dubbo信息
   dubbo:
     application:
-      name: xmall
+      name: xmall-admin
     protocol:
       name: dubbo
       port: 20880

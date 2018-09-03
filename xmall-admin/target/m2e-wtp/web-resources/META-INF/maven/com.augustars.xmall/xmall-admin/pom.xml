@@ -15,15 +15,22 @@
     	<maven.compiler.source>1.8</maven.compiler.source>
     	<maven.compiler.target>1.8</maven.compiler.target>
     	<!-- 配置项目各个依赖关系版本 -->
+    	<xmall-entity.version>0.0.1-SNAPSHOT</xmall-entity.version>
     	<xmall-interface.version>0.0.1-SNAPSHOT</xmall-interface.version>
     	<spring-boot.version>2.0.4.RELEASE</spring-boot.version>
     	<dubbo.version>2.6.2</dubbo.version>
     	<dubbo-boot.version>1.0.0</dubbo-boot.version>
     	<zkclient.version>0.10</zkclient.version>
+    	<shiro-spring.version>1.4.0</shiro-spring.version>
   	</properties>
 
   	<dependencies>
   		<!-- 配置项目接口依赖关系[BEGIN] -->
+  		<dependency>
+  			<groupId>com.augustars.xmall</groupId>
+  			<artifactId>xmall-entity</artifactId>
+  			<version>${xmall-entity.version}</version>
+  		</dependency>
   		<dependency>
   			<groupId>com.augustars.xmall</groupId>
   			<artifactId>xmall-interface</artifactId>
@@ -79,6 +86,21 @@
 		    <version>4.0.1</version>
 		</dependency>
     	<!-- 配置注册中心Zookeeper客户端zkclient依赖关系[END] -->
+    	
+    	<!-- 添加Shiro和Spring结合依赖关系[BEGIN] -->
+		<dependency>
+		    <groupId>org.apache.shiro</groupId>
+		    <artifactId>shiro-spring</artifactId>
+		    <version>${shiro-spring.version}</version>
+		</dependency>
+    	<!-- 添加Shiro和Spring结合依赖关系[END] -->
+    	
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>servlet-api</artifactId>
+		    <version>2.5</version>
+		    <scope>provided</scope>
+		</dependency>
   	</dependencies>
 
   	<build>
