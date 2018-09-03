@@ -1,0 +1,17 @@
+# 配置Tomcat端口号
+server:
+  port: 9998
+# 配置Spring Boot项目名
+spring:
+  application:
+    name: xmall
+# 配置Dubbo信息
+  dubbo:
+    application:
+      name: xmall
+    protocol:
+      name: dubbo
+      port: 20880
+    registry:
+      address: zookeeper://localhost:2181
+    scan: com.augustars.xmall

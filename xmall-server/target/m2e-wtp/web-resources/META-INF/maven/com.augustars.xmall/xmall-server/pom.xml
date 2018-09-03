@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  			xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+  								http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  	<modelVersion>4.0.0</modelVersion>
+
+  	<groupId>com.augustars.xmall</groupId>
+  	<artifactId>xmall-server</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  	<packaging>war</packaging>
+
+  	<properties>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	<maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>1.8</maven.compiler.target>
+    	<!-- 配置项目各个依赖关系版本 -->
+    	<xmall-interface.version>0.0.1-SNAPSHOT</xmall-interface.version>
+    	<spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+    	<dubbo.version>2.6.2</dubbo.version>
+    	<dubbo-boot.version>1.0.0</dubbo-boot.version>
+    	<zkclient.version>0.10</zkclient.version>
+    	<mysql-connector.version>5.1.46</mysql-connector.version>
+  	</properties>
+
+  	<dependencies>
+  		<!-- 配置项目接口依赖关系[BEGIN] -->
+  		<dependency>
+  			<groupId>com.augustars.xmall</groupId>
+  			<artifactId>xmall-interface</artifactId>
+  			<version>${xmall-interface.version}</version>
+  		</dependency>
+  		<!-- 配置项目接口依赖关系[END] -->
+  	
+    	<!-- 配置Spring-Boot依赖关系[BEGIN] -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		    <version>${spring-boot.version}</version>
+		</dependency>
+    	<!-- 配置Spring-Boot依赖关系[END] -->
+    	
+    	<!-- 配置Dubbo依赖关系[BEGIN] -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>dubbo</artifactId>
+		    <version>${dubbo.version}</version>
+		    <exclusions>
+		    	<exclusion>
+		    		<groupId>org.springframework</groupId>
+		    		<artifactId>spring-context</artifactId>
+		    	</exclusion>
+		    </exclusions>
+		</dependency>
+    	<!-- 配置Dubbo依赖关系[END] -->
+    	
+    	<!-- 配置Spring-Boot和Dubbo的结合依赖关系[BEGIN] -->
+    	<dependency>
+            <groupId>io.dubbo.springboot</groupId>
+            <artifactId>spring-boot-starter-dubbo</artifactId>
+            <version>${dubbo-boot.version}</version>
+            <exclusions>
+            	<exclusion>
+            		<groupId>com.101tec</groupId>
+    				<artifactId>zkclient</artifactId>
+            	</exclusion>
+            </exclusions>
+        </dependency>
+    	<!-- 配置Spring-Boot和Dubbo的结合依赖关系[END] -->
+    	
+    	<!-- 配置注册中心Zookeeper客户端zkclient依赖关系[BEGIN] -->
+		<dependency>
+		    <groupId>com.101tec</groupId>
+		    <artifactId>zkclient</artifactId>
+		    <version>${zkclient.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.curator</groupId>
+		    <artifactId>curator-framework</artifactId>
+		    <version>4.0.1</version>
+		</dependency>
+    	<!-- 配置注册中心Zookeeper客户端zkclient依赖关系[END] -->
+    	
+    	<!-- 配置Spring-Boot-Data-JPA依赖关系[BEGIN] -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+		    <version>${spring-boot.version}</version>
+		</dependency>
+    	<!-- 配置Spring-Boot-Data-JPA依赖关系[END] -->
+    	
+    	<!-- 配置MySQL连接驱动依赖关系[BEGIN] -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>${mysql-connector.version}</version>
+		</dependency>
+    	<!-- 配置MySQL连接驱动依赖关系[END] -->
+  	</dependencies>
+
+  	<build>
+    	<finalName>xmall-server</finalName>
+    	<pluginManagement>
+      		<plugins>
+        		<plugin>
+          			<artifactId>maven-clean-plugin</artifactId>
+          			<version>3.0.0</version>
+        		</plugin>
+        		<plugin>
+          			<artifactId>maven-resources-plugin</artifactId>
+          			<version>3.0.2</version>
+        		</plugin>
+        		<plugin>
+          			<artifactId>maven-compiler-plugin</artifactId>
+          			<version>3.7.0</version>
+        		</plugin>
+        		<plugin>
+          			<artifactId>maven-surefire-plugin</artifactId>
+          			<version>2.20.1</version>
+        		</plugin>
+        		<plugin>
+          			<artifactId>maven-war-plugin</artifactId>
+          			<version>3.2.0</version>
+        		</plugin>
+        		<plugin>
+          			<artifactId>maven-install-plugin</artifactId>
+          			<version>2.5.2</version>
+        		</plugin>
+        		<plugin>
+          			<artifactId>maven-deploy-plugin</artifactId>
+          			<version>2.8.2</version>
+        		</plugin>
+      		</plugins>
+    	</pluginManagement>
+  	</build>
+</project>
