@@ -3,5 +3,5 @@ package com.augustars.xmall.switcher;
 import com.augustars.xmall.entity.User;
 
 public interface UserSwitcher {
-	public User getUserByLogin(String loginName) throws Exception;
+	public User getUserByLoginName(String loginName) throws Exception;
 }

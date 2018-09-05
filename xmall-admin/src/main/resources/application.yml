@@ -15,3 +15,8 @@ spring:
     registry:
       address: zookeeper://localhost:2181
     scan: com.augustars.xmall
+# 配置视图解析器的前后缀
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp

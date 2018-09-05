@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 @Entity
 @Table(name="sys_user")
 public class User implements Serializable {
@@ -26,8 +28,7 @@ public class User implements Serializable {
 	private String cellphone;
 	private String email;
 	private Date birthday;
-	private String userImg;
-	private Status status;
+	private String status;
 	private User createUser;
 	private Date createTime;
 	private User updateUser;
@@ -105,20 +106,10 @@ public class User implements Serializable {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-	public String getUserImg() {
-		return userImg;
-	}
-	public void setUserImg(String userImg) {
-		this.userImg = userImg;
-	}
-	
-	@ManyToOne(targetEntity=Status.class,
-			cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="status_id")
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	
@@ -131,6 +122,8 @@ public class User implements Serializable {
 	public void setCreateUser(User createUser) {
 		this.createUser = createUser;
 	}
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -147,6 +140,8 @@ public class User implements Serializable {
 	public void setUpdateUser(User updateUser) {
 		this.updateUser = updateUser;
 	}
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getUpdateTime() {
 		return updateTime;
 	}

@@ -34,6 +34,8 @@ public class ShiroConfiguration {
 		shiroFilter.setSuccessUrl("/index");
 		
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
+		filterChainDefinitionMap.put("/static/**", "anon");
+		filterChainDefinitionMap.put("/user/logout", "logout");
 		filterChainDefinitionMap.put("/**", "authc");
 		shiroFilter.setFilterChainDefinitionMap(filterChainDefinitionMap);
 		return shiroFilter;

@@ -24,21 +24,20 @@ public class ShiroDBRealm extends AuthorizingRealm {
 	}
 
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		// 对于AuthenticationToken进行类型转换
 		UsernamePasswordToken userToken = (UsernamePasswordToken) token;
-		// 获得登录用户名
 		String loginName = userToken.getUsername();
-		// 对于登录密码进行加密
-		userToken.setPassword(EncryptionUtil.encrypt(
-				new String(userToken.getPassword())).toCharArray());
-		// 通过使用loginName查询用户信息
+		String password = new String(userToken.getPassword());
+		password = EncryptionUtil.encrypt(password);
+		userToken.setPassword(password.toCharArray());
+		
+		// 使用登录名查找用户信息
 		try {
-			User user = userSwitcher.getUserByLogin(loginName);
-			if (user != null && "YES".equals(user.getStatus().getStatusCode())) {
-				// 将正确的用户信息和密码交给Shiro进行判断
-				SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(
-						loginName, user.getPassword(), getName());
-				// 默认登录成功，绑定Session
+			User user = userSwitcher.getUserByLoginName(loginName);
+			// 判断是否启用
+			if (user != null && ConstantsUtil.STATUS_YES.equals(user.getStatus())) {
+				SimpleAuthenticationInfo info = 
+						new SimpleAuthenticationInfo(
+								user.getLoginName(), user.getPassword(), getName());
 				SecurityUtils.getSubject().getSession().setAttribute("user", user);
 				return info;
 			}

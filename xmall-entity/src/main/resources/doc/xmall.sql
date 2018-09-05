@@ -23,28 +23,13 @@ DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role` (
   `role_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '角色主键',
   `role_name` varchar(200) DEFAULT NULL COMMENT '角色名称',
-  `role_code` varchar(200) DEFAULT NULL COMMENT '角色编码',
+  `status` varchar(50) DEFAULT NULL COMMENT '状态：Y-启用，N-禁用',
   PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_role` */
 
-insert  into `sys_role`(`role_id`,`role_name`,`role_code`) values (1,'超级管理员','SYSADMIN');
-
-/*Table structure for table `sys_status` */
-
-DROP TABLE IF EXISTS `sys_status`;
-
-CREATE TABLE `sys_status` (
-  `status_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '状态信息主键',
-  `status_name` varchar(200) DEFAULT NULL COMMENT '状态名称',
-  `status_code` varchar(200) DEFAULT NULL COMMENT '状态编码',
-  PRIMARY KEY (`status_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `sys_status` */
-
-insert  into `sys_status`(`status_id`,`status_name`,`status_code`) values (1,'启用','YES');
+insert  into `sys_role`(`role_id`,`role_name`,`status`) values (1,'超级管理员','Y');
 
 /*Table structure for table `sys_user` */
 
@@ -52,26 +37,27 @@ DROP TABLE IF EXISTS `sys_user`;
 
 CREATE TABLE `sys_user` (
   `user_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '用户主键',
-  `user_no` varchar(500) DEFAULT NULL COMMENT '用户编号',
-  `username` varchar(200) DEFAULT NULL COMMENT '用户姓名',
+  `user_no` varchar(100) DEFAULT NULL COMMENT '用户编号',
+  `username` varchar(200) DEFAULT NULL COMMENT '真实姓名',
   `login_name` varchar(500) DEFAULT NULL COMMENT '登录名',
   `password` varchar(500) DEFAULT NULL COMMENT '登录密码，MD5加密',
-  `role_id` int(10) DEFAULT NULL COMMENT '角色编码',
-  `gender` varchar(10) DEFAULT NULL COMMENT '性别：M-男，F-女',
+  `role_id` int(10) DEFAULT NULL COMMENT '用户角色',
+  `gender` varchar(50) DEFAULT NULL COMMENT '性别：M-男，F-女',
   `id_card` varchar(100) DEFAULT NULL COMMENT '身份证号码',
   `cellphone` varchar(100) DEFAULT NULL COMMENT '联系电话',
   `email` varchar(500) DEFAULT NULL COMMENT '电子邮件',
   `birthday` date DEFAULT NULL COMMENT '出生日期',
-  `user_img` varchar(500) DEFAULT NULL COMMENT '头像',
-  `status_id` int(10) DEFAULT NULL COMMENT '状态编码',
+  `status` varchar(50) DEFAULT NULL COMMENT '状态：Y-启用，N-禁用',
   `create_user` int(10) DEFAULT NULL COMMENT '创建人',
-  `create_time` date DEFAULT NULL COMMENT '创建时间',
-  `update_user` int(10) DEFAULT NULL COMMENT '修改人',
-  `update_time` date DEFAULT NULL COMMENT '修改时间',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_user` int(10) DEFAULT NULL COMMENT '更新人',
+  `update_time` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新时间',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_user` */
+
+insert  into `sys_user`(`user_id`,`user_no`,`username`,`login_name`,`password`,`role_id`,`gender`,`id_card`,`cellphone`,`email`,`birthday`,`status`,`create_user`,`create_time`,`update_user`,`update_time`) values (1,'AUG_00001','张昊','zhanghao','e10adc3949ba59abbe56e057f20f883e',1,'M',NULL,NULL,NULL,NULL,'Y',NULL,'2018-09-05 16:37:51',NULL,'2018-09-05 16:43:25');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

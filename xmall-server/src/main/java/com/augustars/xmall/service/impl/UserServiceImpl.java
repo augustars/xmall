@@ -7,16 +7,14 @@ import org.springframework.stereotype.Service;
 
 import com.augustars.xmall.dao.UserDao;
 import com.augustars.xmall.entity.User;
-import com.augustars.xmall.service.UserService;
-
+import com.augustars.xmall.service.UserSerivce;
 @Service("userService")
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserSerivce {
 	@Resource(name="userDao")
 	private UserDao userDao;
-
+	
 	public User getUserByLoginName(String loginName) throws Exception {
-		User user = userDao.findUserByLoginName(loginName);
-		return user;
+		return userDao.findUserByLoginName(loginName);
 	}
 }

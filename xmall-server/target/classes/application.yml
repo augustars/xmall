@@ -24,3 +24,6 @@ spring:
     url: jdbc:mysql://localhost:3306/xmall
     username: root
     password: java
+# 增加JPA配置信息
+  jpa:
+    show-sql: true

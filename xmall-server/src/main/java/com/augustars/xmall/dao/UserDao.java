@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 import com.augustars.xmall.entity.User;
 
 public interface UserDao extends JpaRepository<User, Long> {
-
-	@Query(value="from User u where u.loginName=:loginName")
+	@Query("from User u where u.loginName=:loginName")
 	public User findUserByLoginName(@Param("loginName")String loginName) throws Exception;
 }

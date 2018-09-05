@@ -95,6 +95,19 @@
 		</dependency>
     	<!-- 添加Shiro和Spring结合依赖关系[END] -->
     	
+    	<!-- 当使用内置Tomcat的时候，需要对于JSP进行支持[BEGIN] -->
+		<dependency>
+		    <groupId>org.apache.tomcat.embed</groupId>
+		    <artifactId>tomcat-embed-jasper</artifactId>
+		    <version>8.5.32</version>
+		</dependency>
+    	<!-- 当使用内置Tomcat的时候，需要对于JSP进行支持[END] -->
+    	
+		<dependency>
+		    <groupId>jstl</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
+		</dependency>
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>servlet-api</artifactId>
