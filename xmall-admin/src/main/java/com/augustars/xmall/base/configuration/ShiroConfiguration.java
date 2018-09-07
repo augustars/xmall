@@ -1,10 +1,11 @@
-package com.augustars.xmall.configuration;
+package com.augustars.xmall.base.configuration;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +32,7 @@ public class ShiroConfiguration {
 		ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
 		shiroFilter.setSecurityManager(securityManager);
 		shiroFilter.setLoginUrl("/user/login");
-		shiroFilter.setSuccessUrl("/index");
+		shiroFilter.setSuccessUrl("/user/userIndex");
 		
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 		filterChainDefinitionMap.put("/static/**", "anon");

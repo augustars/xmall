@@ -8,7 +8,8 @@
 	</head>
 	<body>
 		<%
-			String url = request.getContextPath() + "/user/login";
+			System.out.println("index");
+			String url = "/user/userIndex";
 			response.sendRedirect(url);
 		%>
 	</body>
