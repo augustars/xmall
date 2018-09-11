@@ -32,7 +32,7 @@ public class ShiroConfiguration {
 		ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
 		shiroFilter.setSecurityManager(securityManager);
 		shiroFilter.setLoginUrl("/user/login");
-		shiroFilter.setSuccessUrl("/user/userIndex");
+		shiroFilter.setSuccessUrl("/");
 		
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 		filterChainDefinitionMap.put("/static/**", "anon");

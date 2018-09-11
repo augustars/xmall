@@ -12,6 +12,7 @@ spring:
     protocol:
       name: dubbo
       port: 20880
+      serialization: java
     registry:
       address: zookeeper://localhost:2181
     scan: com.augustars.xmall
@@ -27,3 +28,4 @@ spring:
 # 增加JPA配置信息
   jpa:
     show-sql: true
+    open-in-view: true

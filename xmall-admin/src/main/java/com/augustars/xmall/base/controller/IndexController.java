@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String getIndex() throws Exception {
-		System.out.println("getIndex()……");
-		return "test";
+		// 处理进入到首页面的所有请求
+		return "index";
 	}
 }

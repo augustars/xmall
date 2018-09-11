@@ -20,3 +20,13 @@ spring:
     view:
       prefix: /WEB-INF/view/
       suffix: .jsp
+      # 配置数据库连接信息
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/xmall
+    username: root
+    password: java
+# 增加JPA配置信息
+  jpa:
+    show-sql: true
+    open-in-view: true
